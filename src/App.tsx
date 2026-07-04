@@ -1,9 +1,12 @@
-const App = () => {
+// src/App.tsx
+import HeroSection from './components/HeroSection';
+
+function App() {
   return (
-    <div className="container mx-auto p-4 text-center bg-amber-500">
-      SSGC Website
+    <div className="min-h-screen bg-white">
+      <HeroSection />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
