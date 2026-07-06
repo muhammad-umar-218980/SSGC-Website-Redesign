@@ -30,24 +30,27 @@ const HeroSection = () => {
   return (
     <header className="w-full font-poppins">
 
-      {/* <Navbar/> */}
 
-      <nav className="border-b border-slate-100 bg-white px-4 py-3 lg:px-10">
+
+
+    <nav className="border-b border-slate-100 bg-white px-4 py-3 lg:px-10">
       <div className="flex items-center justify-between">
-        <div className="flex flex-1 items-center justify-center gap-3 lg:flex-none lg:justify-start">
+        <div className="flex flex-1 items-center justify-center gap-3 lg:flex-none lg:justify-start max-[360px]:justify-start max-[360px]:gap-2">
           <img
             src="./logo.svg"
             alt="SSGC Logo"
-            className="h-14 w-14 object-contain"
+            className="h-14 w-14 object-contain max-[360px]:h-12 max-[360px]:w-12"
           />
           <div>
-            <p className="text-xs font-semibold tracking-wide text-blue-700">
+            <p className="text-xs font-semibold tracking-wide text-blue-700 max-[360px]:text-[10px]">
               SERVICE WITH A SMILE
             </p>
-            <h1 className="text-xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-2xl">
+            <h1 className="text-xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-2xl max-[360px]:text-lg">
               SUI SOUTHERN GAS
             </h1>
-            <p className="text-sm font-medium text-slate-600">COMPANY LIMITED</p>
+            <p className="text-sm font-medium text-slate-600 max-[360px]:text-[10px]">
+              COMPANY LIMITED
+            </p>
           </div>
         </div>
 
@@ -209,6 +212,8 @@ const HeroSection = () => {
         </div>
       )}
     </nav>
+
+
 
 
       <nav className="mx-3 overflow-hidden rounded-t-2xl bg-[#0e2a5e] px-4 pt-1 sm:mx-4 lg:mx-6 lg:px-6">
