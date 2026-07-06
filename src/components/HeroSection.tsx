@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Flame } from "lucide-react";
+// import Navbar from "../components/Navbar/Navbar"
 
 interface NavItem {
   label: string;
@@ -22,15 +23,23 @@ const navItems: NavItem[] = [
 const HeroSection = () => {
   const [activeTab, setActiveTab] = useState("Home");
   const [activeSlide, setActiveSlide] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
 
   const slideCount = 5;
 
   return (
     <header className="w-full font-poppins">
 
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 bg-white px-6 py-3 lg:px-10">
-        <div className="flex items-center gap-3">
-          <img src="./logo.svg" alt="SSGC Logo" className="h-14 w-14 object-contain" />
+      {/* <Navbar/> */}
+
+      <nav className="border-b border-slate-100 bg-white px-4 py-3 lg:px-10">
+      <div className="flex items-center justify-between">
+        <div className="flex flex-1 items-center justify-center gap-3 lg:flex-none lg:justify-start">
+          <img
+            src="./logo.svg"
+            alt="SSGC Logo"
+            className="h-14 w-14 object-contain"
+          />
           <div>
             <p className="text-xs font-semibold tracking-wide text-blue-700">
               SERVICE WITH A SMILE
@@ -42,8 +51,102 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
+          <div className="hidden items-center gap-6 lg:flex">
+            <div className="flex items-center gap-2">
+              <span className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100 text-blue-700">
+                <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" stroke="currentColor" strokeWidth={2}>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 5a2 2 0 0 1 2-2h2.28a1 1 0 0 1 .95.68l1.2 3.6a1 1 0 0 1-.27 1.05L7.6 9.9a12.05 12.05 0 0 0 6.5 6.5l1.57-1.56a1 1 0 0 1 1.05-.27l3.6 1.2a1 1 0 0 1 .68.95V19a2 2 0 0 1-2 2h-1C9.82 21 3 14.18 3 6V5Z"
+                  />
+                </svg>
+              </span>
+              <div className="text-sm leading-tight">
+                <p className="font-semibold text-slate-800">1199, 99021000</p>
+                <p className="text-slate-500">24/7 Helpline</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100 text-blue-700">
+                <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" stroke="currentColor" strokeWidth={2}>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Z"
+                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m4 7 8 6 8-6" />
+                </svg>
+              </span>
+              <div className="text-sm leading-tight">
+                <p className="font-semibold text-slate-800">info@ssgc.com.pk</p>
+                <p className="text-slate-500">Write to us</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 border-l border-slate-200 pl-6">
+              <div className="text-sm font-medium">
+                <button className="text-blue-700">English</button>
+                <span className="mx-1 text-slate-300">|</span>
+                <button className="text-slate-600">اردو</button>
+              </div>
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="flex h-8 w-8 items-center justify-center rounded bg-blue-800 text-white"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                  <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V9c0-.9.25-1.5 1.55-1.5H16.7V4.7c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.05v2.26H7.7V14h2.7v8h3.1Z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                aria-label="Twitter"
+                className="flex h-8 w-8 items-center justify-center rounded bg-sky-500 text-white"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                  <path d="M22 5.9c-.7.3-1.4.5-2.2.6.8-.5 1.4-1.2 1.7-2.1-.7.4-1.6.8-2.4 1a3.8 3.8 0 0 0-6.5 3.5A10.8 10.8 0 0 1 4.7 4.7a3.8 3.8 0 0 0 1.2 5.1c-.6 0-1.2-.2-1.7-.5v.1c0 1.9 1.3 3.4 3.1 3.8-.6.1-1.1.2-1.7.1a3.8 3.8 0 0 0 3.6 2.6A7.6 7.6 0 0 1 2 17.4a10.8 10.8 0 0 0 5.8 1.7c7 0 10.8-5.8 10.8-10.8v-.5c.8-.5 1.4-1.2 1.9-2Z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="rounded-md p-2 text-slate-600 hover:bg-slate-100 focus:outline-none lg:hidden"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {isOpen && (
+        <div className="mt-4 space-y-4 border-t border-slate-100 pt-4 lg:hidden">
+          <div className="flex items-center justify-center gap-2">
             <span className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100 text-blue-700">
               <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" stroke="currentColor" strokeWidth={2}>
                 <path
@@ -59,7 +162,7 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <span className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100 text-blue-700">
               <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" stroke="currentColor" strokeWidth={2}>
                 <path
@@ -76,33 +179,37 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 border-l border-slate-200 pl-6">
+          <div className="flex w-full items-center justify-between">
             <div className="text-sm font-medium">
               <button className="text-blue-700">English</button>
               <span className="mx-1 text-slate-300">|</span>
               <button className="text-slate-600">اردو</button>
             </div>
-            <a
-              href="#"
-              aria-label="Facebook"
-              className="flex h-8 w-8 items-center justify-center rounded bg-blue-800 text-white"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-                <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V9c0-.9.25-1.5 1.55-1.5H16.7V4.7c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.05v2.26H7.7V14h2.7v8h3.1Z" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              aria-label="Twitter"
-              className="flex h-8 w-8 items-center justify-center rounded bg-sky-500 text-white"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-                <path d="M22 5.9c-.7.3-1.4.5-2.2.6.8-.5 1.4-1.2 1.7-2.1-.7.4-1.6.8-2.4 1a3.8 3.8 0 0 0-6.5 3.5A10.8 10.8 0 0 1 4.7 4.7a3.8 3.8 0 0 0 1.2 5.1c-.6 0-1.2-.2-1.7-.5v.1c0 1.9 1.3 3.4 3.1 3.8-.6.1-1.1.2-1.7.1a3.8 3.8 0 0 0 3.6 2.6A7.6 7.6 0 0 1 2 17.4a10.8 10.8 0 0 0 5.8 1.7c7 0 10.8-5.8 10.8-10.8v-.5c.8-.5 1.4-1.2 1.9-2Z" />
-              </svg>
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="flex h-8 w-8 items-center justify-center rounded bg-blue-800 text-white"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                  <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V9c0-.9.25-1.5 1.55-1.5H16.7V4.7c-.28-.04-1.24-.12-2.36-.12-2.34 0-3.94 1.43-3.94 4.05v2.26H7.7V14h2.7v8h3.1Z" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                aria-label="Twitter"
+                className="flex h-8 w-8 items-center justify-center rounded bg-sky-500 text-white"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+                  <path d="M22 5.9c-.7.3-1.4.5-2.2.6.8-.5 1.4-1.2 1.7-2.1-.7.4-1.6.8-2.4 1a3.8 3.8 0 0 0-6.5 3.5A10.8 10.8 0 0 1 4.7 4.7a3.8 3.8 0 0 0 1.2 5.1c-.6 0-1.2-.2-1.7-.5v.1c0 1.9 1.3 3.4 3.1 3.8-.6.1-1.1.2-1.7.1a3.8 3.8 0 0 0 3.6 2.6A7.6 7.6 0 0 1 2 17.4a10.8 10.8 0 0 0 5.8 1.7c7 0 10.8-5.8 10.8-10.8v-.5c.8-.5 1.4-1.2 1.9-2Z" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+    </nav>
+
 
       <nav className="mx-3 overflow-hidden rounded-t-2xl bg-[#0e2a5e] px-4 pt-1 sm:mx-4 lg:mx-6 lg:px-6">
         <div className="flex items-center justify-between gap-4">
