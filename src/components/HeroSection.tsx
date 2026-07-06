@@ -27,12 +27,8 @@ const HeroSection = () => {
 
   return (
     <header className="w-full font-poppins">
-      {/* Top accent bar */}
-      {/* <div className="h-1 w-full bg-gradient-to-r from-sky-500 via-blue-700 to-slate-900" /> */}
 
-      {/* Top info bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 bg-white px-6 py-3 lg:px-10">
-        {/* Logo + name */}
         <div className="flex items-center gap-3">
           <img src="./logo.svg" alt="SSGC Logo" className="h-14 w-14 object-contain" />
           <div>
@@ -46,7 +42,6 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Contact info */}
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
             <span className="flex h-10 w-10 items-center justify-center rounded-md bg-slate-100 text-blue-700">
@@ -81,7 +76,6 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Language + socials */}
           <div className="flex items-center gap-3 border-l border-slate-200 pl-6">
             <div className="text-sm font-medium">
               <button className="text-blue-700">English</button>
@@ -110,8 +104,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Navbar */}
-      {/* <nav className="mx-3 overflow-hidden rounded-t-2xl bg-[#0e2a5e] px-4 pt-1 sm:mx-4 lg:mx-6 lg:px-6">
+      <nav className="mx-3 overflow-hidden rounded-t-2xl bg-[#0e2a5e] px-4 pt-1 sm:mx-4 lg:mx-6 lg:px-6">
         <div className="flex items-center justify-between gap-4">
           <ul className="flex flex-1 flex-wrap items-stretch gap-x-3">
             {navItems.map((item) => {
@@ -152,11 +145,9 @@ const HeroSection = () => {
             LPG Order Now
           </button>
         </div>
-      </nav> */}
+      </nav>
 
-      {/* Hero banner */}
       <div className="relative h-[420px] w-full overflow-hidden bg-sky-50 sm:h-[480px] lg:h-[560px]">
-        {/* Diagonal light-blue shape + text (left) */}
         <div className="absolute inset-y-0 left-0 z-10 flex w-full items-center sm:w-3/5 lg:w-1/2">
           <div className="max-w-xl px-6 sm:px-10 lg:px-16">
             <h2 className="text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
@@ -180,16 +171,13 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Background photo (right / full bleed) */}
         <img
           src="/hero-pipeline.jpg"
           alt="SSGC gas pipeline infrastructure"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* Soft fade so left-side text stays readable over the photo edge */}
         <div className="absolute inset-y-0 left-0 z-[5] w-full bg-gradient-to-r from-sky-50 via-sky-50/70 to-transparent sm:w-3/5 lg:w-1/2" />
 
-        {/* Carousel arrows */}
         <button
           aria-label="Previous slide"
           onClick={() => setActiveSlide((s) => (s === 0 ? slideCount - 1 : s - 1))}
@@ -209,7 +197,6 @@ const HeroSection = () => {
           </svg>
         </button>
 
-        {/* Carousel dots */}
         <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2 sm:left-[55%]">
           {Array.from({ length: slideCount }).map((_, i) => (
             <button
