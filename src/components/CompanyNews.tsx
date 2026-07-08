@@ -29,7 +29,7 @@ const newsCards: NewsCard[] = [
     title: "SSGC Media Release",
     date: "September 8, 2024",
     status: "Comments Off",
-    image: "/news/media-release.jpg",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "02",
@@ -38,17 +38,16 @@ const newsCards: NewsCard[] = [
     title: "SSGC Disconnects 3,276 Illegal Gas Connections In Sindh And Balochistan",
     date: "September 4, 2024",
     status: "Comments Off",
-    image: "/news/illegal-connections.jpg",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "03",
     badge: "03",
     icon: "clock",
-    title:
-      "24-Hours Gas Holiday For All Industries Including Their Power Generation Units And All CNG Stations In Sindh",
+    title: "24-Hours Gas Holiday For All Industries Including Their Power Generation Units And All CNG Stations In Sindh",
     date: "August 22, 2024",
     status: "Comments Off",
-    image: "/news/gas-holiday.jpg",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "04",
@@ -57,7 +56,7 @@ const newsCards: NewsCard[] = [
     title: "1 Arrested For Gas Theft, 809 Disconnections Made",
     date: "August 12, 2024",
     status: "Comments Off",
-    image: "/news/gas-theft-arrest.jpg",
+    image: "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "05",
@@ -66,7 +65,7 @@ const newsCards: NewsCard[] = [
     title: "SSGC Launches Awareness Campaign On Safe Gas Usage",
     date: "August 5, 2024",
     status: "Comments Off",
-    image: "/news/awareness-campaign.jpg",
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "06",
@@ -75,7 +74,7 @@ const newsCards: NewsCard[] = [
     title: "SSGC Signs MoU For RLNG Infrastructure Expansion",
     date: "July 29, 2024",
     status: "Comments Off",
-    image: "/news/rlng-mou.jpg",
+    image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "07",
@@ -84,7 +83,7 @@ const newsCards: NewsCard[] = [
     title: "Scheduled Gas Supply Suspension For Maintenance In Karachi",
     date: "July 18, 2024",
     status: "Comments Off",
-    image: "/news/supply-suspension.jpg",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: "08",
@@ -93,7 +92,7 @@ const newsCards: NewsCard[] = [
     title: "SSGC Recovers Rs. 50 Million In Gas Theft Crackdown",
     date: "July 10, 2024",
     status: "Comments Off",
-    image: "/news/theft-crackdown.jpg",
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
