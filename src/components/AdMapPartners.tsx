@@ -8,37 +8,63 @@ const InstagramIcon = ({ className }: { className?: string }) => (
     <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
   </svg>
 );
-
 interface AdSlide {
   image: string;
   alt: string;
 }
 
 const adSlides: AdSlide[] = [
-  { image: "/ads/gas-theft-warning-1.jpg", alt: "SSGC gas theft awareness ad" },
-  { image: "/ads/gas-theft-warning-2.jpg", alt: "SSGC gas safety ad" },
-  { image: "/ads/gas-theft-warning-3.jpg", alt: "SSGC gas theft awareness ad" },
-  { image: "/ads/gas-theft-warning-4.jpg", alt: "SSGC gas safety ad" },
+  {
+    image:
+      "https://images.unsplash.com/photo-1507823690283-48b0929e727b?auto=format&fit=crop&w=1200&q=80",
+    alt: "Industrial gas pipe",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1559510981-10719ce4266a?auto=format&fit=crop&w=1200&q=80",
+    alt: "Gas pipe infrastructure",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1694674818352-f6061a0561a1?auto=format&fit=crop&w=1200&q=80",
+    alt: "Connected industrial pipes",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1542274368-443d694d79aa?auto=format&fit=crop&w=1200&q=80",
+    alt: "Industrial pipeline",
+  },
 ];
 
-// Text-based wordmarks as stand-ins — replace with your real partner logo
-// image files (each bank's actual logo asset), since trademarked logos
-// shouldn't be recreated from scratch here.
 interface Partner {
   name: string;
-  sub?: string;
+  logo: string;
+  url?: string;
 }
 
 const partners: Partner[] = [
-  { name: "MCB", sub: "Bank for Life" },
-  { name: "Faysal Bank" },
-  { name: "Bank Muscat" },
-  { name: "Bank Alfalah", sub: "The Way Forward" },
-  { name: "Bank AL Habib" },
-  { name: "al Baraka" },
-  { name: "UBL", sub: "Where you come first" },
-  { name: "Meezan Bank", sub: "The Premier Islamic Bank" },
-  { name: "Standard Chartered" },
+  { name: "Allied Bank", logo: "/Bank%20Logos/logo_abl.png", url: "http://www.abl.com/" },
+  { name: "Askari Bank", logo: "/Bank%20Logos/logo_askaribank.png", url: "http://www.askaribank.com.pk/" },
+  { name: "Bank Alfalah", logo: "/Bank%20Logos/logo_bankalfalah.png", url: "http://www.bankalfalah.com/" },
+  { name: "Bank AL Habib", logo: "/Bank%20Logos/logo_bankalhabib.png", url: "http://www.bankalhabib.com/" },
+  { name: "Al Baraka", logo: "/Bank%20Logos/logo_albaraka_slider.png", url: "http://www.albaraka.com.pk/" },
+  { name: "BankIslami", logo: "/Bank%20Logos/logo_bankislami.png" },
+  { name: "Easypaisa", logo: "/Bank%20Logos/logo_easypaisa.png", url: "http://www.easypaisa.com.pk/" },
+  { name: "Faysal Bank", logo: "/Bank%20Logos/logo_faysalbank.png", url: "http://www.faysalbank.com/" },
+  { name: "Habib Metro", logo: "/Bank%20Logos/logo_hmb.png", url: "http://habibmetro.com/" },
+  { name: "HBL", logo: "/Bank%20Logos/logo_hbl.png", url: "http://www.hbl.com/" },
+  { name: "HBL Express", logo: "/Bank%20Logos/logo_hblexpress.png", url: "http://www.hbl.com/hbl-express.php" },
+  { name: "MCB", logo: "/Bank%20Logos/logo_mcb.png", url: "http://www.mcb.com.pk/" },
+  { name: "JazzCash", logo: "/Bank%20Logos/Jazz-cash-logo24.png", url: "https://www.jazzcash.com.pk/" },
+  { name: "Standard Chartered", logo: "/Bank%20Logos/logo_standardchartered.png", url: "http://www.standardchartered.com.pk/" },
+  { name: "Timepey", logo: "/Bank%20Logos/logo_timepey.png", url: "http://www.timepey.com/" },
+  { name: "U Bank", logo: "/Bank%20Logos/logo_ubank.png", url: "http://www.ubank.com.pk/" },
+  { name: "UBL", logo: "/Bank%20Logos/logo_ubl.png", url: "https://www.ubldirect.com/" },
+  {
+    name: "UBL Omni",
+    logo: "/Bank%20Logos/logo_ublomni.png",
+    url: "https://www.ubldirect.com/corporate/bankingservices/omni/home.aspx",
+  },
 ];
 
 const ADDRESS = "ST-4/B, Block 14, Sir Shah Muhammad Suleman Road, Gulshan-e-Iqbal, Karachi, Pakistan.";
@@ -66,10 +92,12 @@ const AdMapPartners = () => {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Our Latest Ad */}
         <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-7">
-          <h3 className="text-lg font-extrabold tracking-wide text-blue-950">
-            OUR LATEST AD
-          </h3>
-          <span className="mt-2 block h-1 w-10 bg-amber-400" />
+          <div className="text-center">
+            <h3 className="text-lg font-extrabold tracking-wide text-blue-950">
+              OUR LATEST AD
+            </h3>
+            <span className="mx-auto mt-2 block h-1 w-10 bg-amber-400" />
+          </div>
 
           <div className="relative mt-5 overflow-hidden rounded-xl">
             <div className="relative aspect-[16/10] w-full bg-slate-900">
@@ -137,10 +165,12 @@ const AdMapPartners = () => {
 
         {/* Locate Us */}
         <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-7">
-          <h3 className="text-lg font-extrabold tracking-wide text-blue-950">
-            LOCATE US
-          </h3>
-          <span className="mt-2 block h-1 w-10 bg-amber-400" />
+          <div className="text-center">
+            <h3 className="text-lg font-extrabold tracking-wide text-blue-950">
+              LOCATE US
+            </h3>
+            <span className="mx-auto mt-2 block h-1 w-10 bg-amber-400" />
+          </div>
 
           <div className="relative mt-5 overflow-hidden rounded-xl">
             <div className="aspect-[16/10] w-full">
@@ -190,31 +220,11 @@ const AdMapPartners = () => {
 
       {/* Our Business Partners — auto-scrolling marquee */}
       <div className="mt-4 rounded-2xl bg-white px-6 py-7 shadow-sm sm:px-7">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-lg font-extrabold tracking-wide text-blue-950">
-              OUR BUSINESS PARTNERS
-            </h3>
-            <span className="mt-2 block h-1 w-10 bg-amber-400" />
-          </div>
-
-          {/* Pause / resume the marquee (hover already pauses it too) */}
-          <div className="hidden items-center gap-2 sm:flex">
-            <button
-              aria-label="Pause partners scroll"
-              onClick={() => setIsPaused((p) => !p)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors hover:bg-slate-100"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              aria-label="Resume partners scroll"
-              onClick={() => setIsPaused((p) => !p)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors hover:bg-slate-100"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
+        <div className="text-center">
+          <h3 className="text-lg font-extrabold tracking-wide text-blue-950">
+            OUR BUSINESS PARTNERS
+          </h3>
+          <span className="mx-auto mt-2 block h-1 w-10 bg-amber-400" />
         </div>
 
         <div
@@ -226,23 +236,42 @@ const AdMapPartners = () => {
             ref={trackRef}
             className="flex w-max items-center gap-16"
             style={{
-              animation: "partners-marquee 22s linear infinite",
+              animation: "partners-marquee 26s linear infinite",
               animationPlayState: isPaused ? "paused" : "running",
             }}
           >
             {/* Render the list twice back-to-back for a seamless loop */}
-            {[...partners, ...partners].map((partner, i) => (
-              <div
-                key={`${partner.name}-${i}`}
-                className="flex shrink-0 flex-col items-center justify-center gap-0.5 opacity-80 transition-opacity hover:opacity-100"
-                style={{ minWidth: "160px" }}
-              >
-                <span className="text-xl font-bold text-slate-700">{partner.name}</span>
-                {partner.sub && (
-                  <span className="text-[11px] text-slate-400">{partner.sub}</span>
-                )}
-              </div>
-            ))}
+            {[...partners, ...partners].map((partner, i) => {
+              const logoImg = (
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="max-h-24 w-auto max-w-[240px] object-contain"
+                />
+              );
+
+              return (
+                <div
+                  key={`${partner.name}-${i}`}
+                  className="flex h-24 shrink-0 items-center justify-center"
+                  style={{ minWidth: "240px" }}
+                >
+                  {partner.url ? (
+                    <a
+                      href={partner.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={partner.name}
+                      className="flex h-full w-full items-center justify-center transition-transform hover:scale-105"
+                    >
+                      {logoImg}
+                    </a>
+                  ) : (
+                    logoImg
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
