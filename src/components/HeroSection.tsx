@@ -5,6 +5,7 @@ import {
   Mail,
   Menu,
   X,
+  ChevronDown,
   FileCheck2,
   FilePenLine,
   IdCard,
@@ -16,6 +17,7 @@ import {
 interface NavItem {
   label: string;
   sublabel?: string;
+  dropdown?: string[];
 }
 
 interface QuickLink {
@@ -37,15 +39,135 @@ const quickLinks: QuickLink[] = [
 
 const navItems: NavItem[] = [
   { label: "Home" },
-  { label: "About Us" },
-  { label: "Financial", sublabel: "Highlights" },
-  { label: "Customer", sublabel: "Management" },
-  { label: "New", sublabel: "Connection" },
-  { label: "Investor", sublabel: "Information" },
-  { label: "Tenders" },
-  { label: "Media", sublabel: "Center" },
-  { label: "Helpline", sublabel: "& Complaints" },
-  { label: "R&D Department" },
+  {
+    label: "About Us",
+    dropdown: [
+      "The State-Owned Enterprises (C-Level Appointments) Guidelines 2024",
+      "Profile",
+      "Vision",
+      "Mission",
+      "Core Values",
+      "Meter Manufacturing Plant",
+      "Board Of Directors And Management",
+      "Gender Pay Gap",
+      "Company Offices",
+      "Policies",
+      "Focal Person As Per Right Of Access To Information Act 2017",
+      "Gas Transportation",
+    ],
+  },
+  {
+    label: "Financial",
+    sublabel: "Highlights",
+    dropdown: [
+      "Ten Years At A Glance",
+      "Financial Reports",
+      "Annual Progress On Business Plan FY 2024-2027",
+      "SECP Compliance Certificate",
+    ],
+  },
+  {
+    label: "Customer",
+    sublabel: "Management",
+    dropdown: [
+      "Update Your CNIC",
+      "Domestic Services",
+      "Commercial Services",
+      "Industrial Services",
+      "Process Of Gas Connection (Domestic/ Commercial/ Industrial)",
+      "LPG Air-Mix",
+      "RLNG Provisional Price",
+      "View Bill",
+      "Consumer Service Manual",
+      "Domestic Bill Calculator",
+      "Calculation Of SSGC Domestic Gas Bill",
+      "Frequently Asked Questions (FAQs)",
+    ],
+  },
+  {
+    label: "New",
+    sublabel: "Connection",
+    dropdown: [
+      "Apply For Commercial Gas Connection",
+      "Apply For Industrial Connection",
+      "New Domestic & Commercial Gas Connection Application Processing",
+    ],
+  },
+  {
+    label: "Investor",
+    sublabel: "Information",
+    dropdown: [
+      "Election Of Directors, 2025",
+      "Compliance With SOE Act",
+      "71st Annual General Meeting",
+      "Corporate Briefing Session (CBS)",
+      "Consent For Electronic Transmission Of Annual Audited Financial Statements",
+      "Contact For Investment Assistance / Grievances",
+      "Credit Rating",
+      "Dividend Mandate Form",
+      "Financial Reports",
+      "Important Circulars / Notifications",
+      "Investors Relation",
+      "Conversion Of Physical Shares Of SSGCL Into Book-Entry Form",
+    ],
+  },
+  {
+    label: "Tenders",
+    dropdown: [
+      "Active Tenders",
+      "Three-Quotation Tenders",
+      "Most Procured Material",
+      "Tender Evaluations",
+      "Blacklisted Firms",
+      "Blacklisting Mechanism",
+      "Annual Procurement Plan 2020-21",
+      "Annual Procurement Plan 2021-22",
+      "Annual Procurement Plan 2022-23",
+      "Annual Procurement Plan 2023-24",
+      "Annual Procurement Plan 2025-26",
+    ],
+  },
+  {
+    label: "Media",
+    sublabel: "Center",
+    dropdown: [
+      "Flame Magazine",
+      "Advertisements",
+      "Social Media",
+      "Press Releases",
+      "Events",
+      "News",
+      "Operation Grift Updates",
+    ],
+  },
+  {
+    label: "Helpline",
+    sublabel: "& Complaints",
+    dropdown: [
+      "How Customers Can Complain",
+      "Complaint Types And Estimated Resolution Timelines",
+      "Federal Ombudsman Numbers",
+      "Public Complaints Resolution Mechanism",
+      "Complaints/Feedback",
+      "Important Numbers",
+      "Customer Facilitation Centers",
+      "Check Gas Line For Leakages",
+      "Safety Education",
+    ],
+  },
+  {
+    label: "R&D Department",
+    dropdown: ["Let's Work Together"],
+  },
+];
+
+// Hero slider images (Unsplash — free to use)
+const heroImages: string[] = [
+  "https://images.unsplash.com/photo-1539186607619-df476afe6ff1?auto=format&fit=crop&w=1600&q=80", // industrial tower
+  "https://images.unsplash.com/photo-1633956843342-a4dea80517b0?auto=format&fit=crop&w=1600&q=80", // metal plant in green field
+  "https://images.unsplash.com/photo-1509390288171-ce2088f7d08e?auto=format&fit=crop&w=1600&q=80", // aerial concrete structure
+  "https://images.unsplash.com/photo-1509390032417-bd802f3fc669?auto=format&fit=crop&w=1600&q=80", // lighted plant at night
+  "https://images.unsplash.com/photo-1648555394313-494797ad48fc?auto=format&fit=crop&w=1600&q=80", // rigs / offshore energy
 ];
 
 const HeroSection = () => {
@@ -53,8 +175,25 @@ const HeroSection = () => {
   const [activeSlide, setActiveSlide] = useState(1);
   const [isTopMenuOpen, setIsTopMenuOpen] = useState(false);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+  const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(null);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
 
-  const slideCount = 5;
+  const slideCount = heroImages.length;
+
+  const handleMobileItemClick = (item: NavItem) => {
+    if (item.dropdown) {
+      setOpenMobileDropdown((prev) => (prev === item.label ? null : item.label));
+    } else {
+      setActiveTab(item.label);
+      setIsNavMenuOpen(false);
+    }
+  };
+
+  const handleMobileSubItemClick = (parentLabel: string, sub: string) => {
+    setActiveTab(parentLabel);
+    setIsNavMenuOpen(false);
+    setOpenMobileDropdown(null);
+  };
 
   return (
     <header className="w-full font-poppins">
@@ -215,26 +354,59 @@ const HeroSection = () => {
       </nav>
 
       <nav className="mx-3 rounded-t-2xl bg-[#0e2a5e] px-3 py-2 sm:mx-4 lg:mx-6 lg:px-4 lg:py-0">
+        {/* DESKTOP NAV WITH DROPDOWNS */}
         <div className="hidden lg:block">
           <ul
             role="tablist"
-            className="flex flex-1 items-stretch justify-between gap-x-1 overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="flex flex-1 items-stretch justify-between gap-x-1 overflow-visible scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
-            {navItems.map((item) => {
+            {navItems.map((item, index) => {
               const isActive = activeTab === item.label;
+              const isOpen = openDesktopDropdown === item.label;
+              const isWideDropdown = (item.dropdown?.length ?? 0) > 8;
+
+              // Anchor edge items so their dropdown panel never spills off-screen
+              const isNearLeftEdge = index <= 1;
+              const isNearRightEdge = index >= navItems.length - 2;
+              const positionClass = isNearLeftEdge
+                ? "left-0"
+                : isNearRightEdge
+                ? "right-0"
+                : "left-1/2 -translate-x-1/2";
+
               return (
-                <li key={item.label} className="flex-1">
+                <li
+                  key={item.label}
+                  className="relative flex-1"
+                  onMouseEnter={() => item.dropdown && setOpenDesktopDropdown(item.label)}
+                  onMouseLeave={() => item.dropdown && setOpenDesktopDropdown(null)}
+                >
                   <button
                     role="tab"
                     aria-selected={isActive}
-                    onClick={() => setActiveTab(item.label)}
+                    aria-expanded={item.dropdown ? isOpen : undefined}
+                    onClick={() => {
+                      setActiveTab(item.label);
+                      if (item.dropdown) {
+                        setOpenDesktopDropdown((prev) => (prev === item.label ? null : item.label));
+                      }
+                    }}
                     className={`relative flex h-full w-full flex-col items-center justify-center gap-0.5 rounded-t-md px-2 py-3 text-center text-[15px] font-medium transition-all duration-300 ease-out whitespace-nowrap ${
                       isActive
                         ? "bg-white/10 text-white"
                         : "text-white/80 hover:bg-white/5 hover:text-white"
                     }`}
                   >
-                    <span>{item.label}</span>
+                    <span className="flex items-center gap-1">
+                      {item.label}
+                      {item.dropdown && (
+                        <ChevronDown
+                          className={`h-3.5 w-3.5 transition-transform duration-200 ease-out ${
+                            isOpen ? "rotate-180" : "rotate-0"
+                          }`}
+                        />
+                      )}
+                    </span>
                     {item.sublabel && (
                       <span
                         className={`text-xs font-normal transition-colors duration-300 ease-out ${
@@ -250,70 +422,170 @@ const HeroSection = () => {
                       }`}
                     />
                   </button>
+
+                  {item.dropdown && (
+                    <div
+                      className={`absolute top-full z-50 pt-2 transition-all duration-200 ease-out ${positionClass} ${
+                        isOpen
+                          ? "pointer-events-auto translate-y-0 opacity-100"
+                          : "pointer-events-none -translate-y-1 opacity-0"
+                      }`}
+                    >
+                      <div
+                        className={`overflow-hidden rounded-lg bg-white shadow-[0_16px_40px_-8px_rgba(15,23,42,0.35)] ring-1 ring-slate-100 ${
+                          isWideDropdown ? "w-[520px]" : "w-72"
+                        }`}
+                      >
+                        <ul
+                          className={`max-h-96 overflow-y-auto py-2 ${
+                            isWideDropdown ? "grid grid-cols-2 gap-x-2" : ""
+                          }`}
+                        >
+                          {item.dropdown.map((sub) => (
+                            <li key={sub}>
+                              <button
+                                onClick={() => {
+                                  setActiveTab(item.label);
+                                  setOpenDesktopDropdown(null);
+                                }}
+                                className="block w-full px-4 py-2 text-left text-sm leading-snug text-slate-700 transition-colors duration-150 ease-out hover:bg-slate-50 hover:text-blue-700"
+                              >
+                                {sub}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
                 </li>
               );
             })}
           </ul>
         </div>
 
+        {/* Mobile trigger only — the sidebar itself is rendered outside this nav so it can overlay the whole page */}
         <div className="lg:hidden">
           <div className="flex items-center justify-between">
             <button
-              onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
+              onClick={() => setIsNavMenuOpen(true)}
               className="flex items-center gap-2 rounded-md px-3 py-2 text-white transition-all duration-300 ease-out hover:bg-white/10"
               aria-expanded={isNavMenuOpen}
+              aria-label="Open navigation menu"
             >
-              {isNavMenuOpen ? (
-                <X className="h-5 w-5 transition-transform duration-300" />
-              ) : (
-                <Menu className="h-5 w-5 transition-transform duration-300" />
-              )}
-              <span className="text-sm font-medium">
-                {isNavMenuOpen ? "Close" : "Menu"}
-              </span>
+              <Menu className="h-5 w-5" />
+              <span className="text-sm font-medium">Menu</span>
             </button>
             <span className="text-xs text-white/50">SSGC Navigation</span>
-          </div>
-
-          <div
-            className={`overflow-hidden transition-all duration-300 ease-out ${
-              isNavMenuOpen ? "max-h-[600px] opacity-100 mt-3" : "max-h-0 opacity-0"
-            }`}
-          >
-            <div className="border-t border-white/10 pt-3">
-              <ul className="grid grid-cols-2 gap-1 sm:grid-cols-3">
-                {navItems.map((item) => {
-                  const isActive = activeTab === item.label;
-                  return (
-                    <li key={item.label}>
-                      <button
-                        onClick={() => {
-                          setActiveTab(item.label);
-                          setIsNavMenuOpen(false);
-                        }}
-                        className={`w-full rounded-md px-3 py-2.5 text-left text-sm transition-all duration-200 ease-out ${
-                          isActive
-                            ? "bg-amber-400/20 text-amber-400"
-                            : "text-white/80 hover:bg-white/5 hover:text-white"
-                        }`}
-                      >
-                        <span className="font-medium">{item.label}</span>
-                        {item.sublabel && (
-                          <span className="ml-1.5 text-[10px] font-normal text-white/40">
-                            {item.sublabel}
-                          </span>
-                        )}
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
           </div>
         </div>
       </nav>
 
+      {/* Sidebar overlay backdrop (second navbar only) */}
+      <div
+        onClick={() => {
+          setIsNavMenuOpen(false);
+          setOpenMobileDropdown(null);
+        }}
+        className={`fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-[1px] transition-opacity duration-300 ease-out lg:hidden ${
+          isNavMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={!isNavMenuOpen}
+      />
+
+      {/* Sidebar panel (second navbar only) — with accordion-style dropdowns */}
+      <aside
+        className={`fixed inset-y-0 right-0 z-50 w-[85%] max-w-sm transform bg-[#0e2a5e] shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
+          isNavMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site navigation"
+      >
+        <div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
+          <span className="text-sm font-semibold text-white">Navigation</span>
+          <button
+            onClick={() => {
+              setIsNavMenuOpen(false);
+              setOpenMobileDropdown(null);
+            }}
+            className="flex h-9 w-9 items-center justify-center rounded-md text-white transition-colors duration-200 ease-out hover:bg-white/10"
+            aria-label="Close navigation menu"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        <ul className="flex flex-col gap-1 overflow-y-auto px-3 py-3 h-[calc(100%-64px)]">
+          {navItems.map((item) => {
+            const isActive = activeTab === item.label;
+            const isOpen = openMobileDropdown === item.label;
+
+            return (
+              <li key={item.label}>
+                <button
+                  onClick={() => handleMobileItemClick(item)}
+                  aria-expanded={item.dropdown ? isOpen : undefined}
+                  className={`flex w-full items-center justify-between rounded-md px-3 py-3 text-left text-sm transition-all duration-200 ease-out ${
+                    isActive
+                      ? "bg-amber-400/20 text-amber-400"
+                      : "text-white/80 hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  <span>
+                    <span className="font-medium">{item.label}</span>
+                    {item.sublabel && (
+                      <span className="ml-1.5 text-[10px] font-normal text-white/40">
+                        {item.sublabel}
+                      </span>
+                    )}
+                  </span>
+                  {item.dropdown && (
+                    <ChevronDown
+                      className={`h-4 w-4 shrink-0 transition-transform duration-200 ease-out ${
+                        isOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  )}
+                </button>
+
+                {item.dropdown && (
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-out ${
+                      isOpen ? "max-h-[1200px] opacity-100" : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <ul className="ml-3 mt-1 space-y-0.5 border-l border-white/10 py-1 pl-3">
+                      {item.dropdown.map((sub) => (
+                        <li key={sub}>
+                          <button
+                            onClick={() => handleMobileSubItemClick(item.label, sub)}
+                            className="block w-full rounded-md px-2 py-2 text-left text-[13px] leading-snug text-white/70 transition-colors duration-150 ease-out hover:bg-white/5 hover:text-white"
+                          >
+                            {sub}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </aside>
+
       <div className="relative h-[420px] w-full overflow-hidden bg-sky-50 sm:h-[480px] lg:h-[560px]">
+        {heroImages.map((src, i) => (
+          <div
+            key={src}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-out ${
+              activeSlide === i ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ backgroundImage: `url(${src})` }}
+          />
+        ))}
+
         <div className="absolute inset-y-0 left-0 z-10 flex w-full items-center sm:w-3/5 lg:w-1/2">
           <div className="max-w-xl px-6 sm:px-10 lg:px-16">
             <h2 className="text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
@@ -359,7 +631,7 @@ const HeroSection = () => {
         </button>
 
         <div className="absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 gap-2 sm:left-[55%]">
-          {Array.from({ length: slideCount }).map((_, i) => (
+          {heroImages.map((_, i) => (
             <button
               key={i}
               aria-label={`Go to slide ${i + 1}`}
