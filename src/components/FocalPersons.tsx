@@ -22,7 +22,6 @@ const focalPersons: FocalPerson[] = [
   },
 ];
 
-/** Small reusable decorative dot-grid pattern used in the corners/background */
 const DotPattern = ({ className }: { className?: string }) => (
   <svg
     className={className}
