@@ -103,8 +103,6 @@ const CompanyNews = () => {
   const [activePage, setActivePage] = useState(0);
   const totalPages = newsCards.length - CARDS_PER_VIEW + 1;
 
-  // Width of a single card + the gap between cards — this is the "step"
-  // we move by so only 1 new card enters/exits per click, not a whole page.
   const getStep = () => {
     const track = trackRef.current;
     if (!track) return 0;
@@ -126,7 +124,6 @@ const CompanyNews = () => {
     track.scrollTo({ left: page * getStep(), behavior: "smooth" });
   };
 
-  // Keep the active dot in sync with manual scrolling/dragging
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
