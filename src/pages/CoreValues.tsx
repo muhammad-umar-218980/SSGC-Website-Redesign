@@ -1,5 +1,7 @@
 import { useMemo, type ReactNode } from "react";
-import { Flame, Gem, CalendarDays } from "lucide-react";
+import { Gem, CalendarDays } from "lucide-react";
+
+import coreValuesBanner from "../assets/Core Values/CoreValues banner.png";
 
 /**
  * CoreValues
@@ -190,29 +192,16 @@ export default function CoreValues({
   updatedOn?: string;
 }) {
   return (
-    <section className="font-poppins mx-3 mb-3 overflow-hidden rounded-3xl bg-gradient-to-b from-blue-50 via-white to-blue-50 sm:mx-4 lg:mx-6">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-8 sm:py-20">
-        {/* Header */}
-        <div className="mb-14 text-center">
-          <div className="mb-3 flex justify-center">
-            <Flame className="h-8 w-8 fill-blue-600 text-blue-600" />
-          </div>
-          <p className="mb-2 text-xs font-bold tracking-[0.2em] text-blue-600 sm:text-sm">
-            OUR FOUNDATION. OUR COMMITMENT.
-          </p>
-          <h2 className="text-4xl font-extrabold sm:text-6xl">
-            <span className="text-slate-900">CORE</span>{" "}
-            <span className="text-blue-600">VALUES</span>
-          </h2>
-          <div className="mx-auto mt-4 flex items-center justify-center gap-3">
-            <span className="h-px w-12 bg-slate-300" />
-            <span className="h-2 w-2 rotate-45 bg-blue-600" />
-            <span className="h-px w-12 bg-slate-300" />
-          </div>
-          <p className="mx-auto mt-4 max-w-xl text-sm text-slate-500 sm:text-base">
-            The principles that guide our actions and define who we are.
-          </p>
-        </div>
+    <section className="font-poppins bg-gradient-to-b from-blue-50 via-white to-blue-50">
+      <div className="mx-3 sm:mx-4 lg:mx-6">
+        <img
+          src={coreValuesBanner}
+          alt="Core Values Banner"
+          className="w-full object-cover"
+        />
+      </div>
+      <div className="mx-3 mb-3 overflow-hidden rounded-3xl sm:mx-4 lg:mx-6">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-8 sm:py-20">
 
         {/* Desktop: hex flower */}
         <div className="relative hidden aspect-square w-full lg:block">
@@ -308,6 +297,7 @@ export default function CoreValues({
             <span className="text-sm">Updated: {updatedOn}</span>
             <span className="h-px w-16 bg-slate-300" />
           </div>
+        </div>
         </div>
       </div>
     </section>
