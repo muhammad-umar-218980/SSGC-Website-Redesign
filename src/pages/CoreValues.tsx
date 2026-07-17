@@ -20,9 +20,7 @@ type ValueItem = {
   key: string;
   title: string;
   description: string;
-  /** circular photo shown instead of an icon */
   image: string;
-  /** gradient classes for the hexagon's own background (lg+ layout) */
   bg: string;
   pos: { top: number; left: number };
 };
@@ -175,7 +173,7 @@ function Connectors({ items }: { items: ValueItem[] }) {
               y2={nearOuterY}
               stroke="#93c5fd"
               strokeWidth={2}
-              strokeDasharray="6 8"
+              strokeDasharray="3 5"   // ← changed from "6 8" to make dashes consistent
             />
             <circle cx={midX} cy={midY} r={6} fill="#2563eb" />
             <circle cx={nearOuterX} cy={nearOuterY} r={6} fill="#2563eb" />
