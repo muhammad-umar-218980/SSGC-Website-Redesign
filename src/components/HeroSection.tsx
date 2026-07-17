@@ -55,7 +55,7 @@ const HeroSection = () => {
 
         <div className="absolute inset-y-0 left-0 z-10 flex w-full items-center sm:w-3/5 lg:w-1/2">
           <div className="max-w-xl px-6 sm:px-10 lg:px-16">
-            <h2 className="text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            <h2 className="font-poppins text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
               Delivering
               <br />
               Natural Energy for a
