@@ -169,7 +169,7 @@ const moreIssues: Issue[] = [
 
 function IssueCard({ issue, side }: { issue: Issue; side: "left" | "right" }) {
   return (
-    <div className="relative flex gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-[0_10px_30px_-12px_rgba(15,23,42,0.15)] sm:p-5">
+    <div className="relative group flex gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-[0_10px_30px_-12px_rgba(15,23,42,0.15)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(15,23,42,0.25)] sm:p-5">
       {/* pointer notch toward the center line (desktop only) */}
       <span
         className={`absolute top-9 hidden h-3.5 w-3.5 rotate-45 border border-slate-100 bg-white sm:block ${
@@ -177,16 +177,18 @@ function IssueCard({ issue, side }: { issue: Issue; side: "left" | "right" }) {
         }`}
       />
 
-      <img
-        src={issue.image}
-        alt={issue.period}
-        className="h-36 w-24 shrink-0 rounded-xl object-cover sm:h-40 sm:w-28"
-        loading="lazy"
-      />
+      <div className="overflow-hidden rounded-xl shrink-0">
+        <img
+          src={issue.image}
+          alt={issue.period}
+          className="h-36 w-28 rounded-xl object-cover transition-transform duration-500 group-hover:scale-105 sm:h-40 sm:w-28"
+          loading="lazy"
+        />
+      </div>
 
       <div className="flex min-w-0 flex-1 flex-col">
         {issue.isLatest && (
-          <span className="mb-1.5 w-fit rounded-full bg-blue-50 px-3 py-1 text-[11px] font-semibold tracking-wide text-blue-600">
+          <span className="mb-1.5 w-fit rounded-full bg-gradient-to-r from-amber-400 to-orange-500 px-3 py-1 text-[11px] font-semibold tracking-widest text-white shadow-sm">
             LATEST ISSUE
           </span>
         )}
@@ -202,13 +204,12 @@ function IssueCard({ issue, side }: { issue: Issue; side: "left" | "right" }) {
 
         <hr className="my-3 border-slate-100" />
 
-        <div className="flex items-center gap-2 text-sm font-medium">
-          <a href="#" className="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700">
+        <div className="flex flex-wrap items-center gap-2 text-sm font-medium max-[490px]:flex-col">
+          <a href="#" className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-blue-200 px-3.5 py-1.5 text-xs font-semibold text-blue-600 transition-colors hover:border-blue-300 hover:bg-blue-50 max-[490px]:w-full max-[490px]:justify-center">
             <BookOpenIcon className="h-4 w-4" />
             Read Online
           </a>
-          <span className="text-slate-300">|</span>
-          <a href="#" className="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700">
+          <a href="#" className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-blue-200 px-3.5 py-1.5 text-xs font-semibold text-blue-600 transition-colors hover:border-blue-300 hover:bg-blue-50 max-[490px]:w-full max-[490px]:justify-center">
             <DownloadIcon className="h-4 w-4" />
             Download PDF
           </a>
