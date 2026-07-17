@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Flame,
   Phone,
@@ -146,6 +146,20 @@ export default function Header() {
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(null);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setActiveTab("Home");
+    } else {
+      const matchingItem = navItems.find((item) =>
+        item.dropdown?.some(
+          (sub) => location.pathname === `/${sub.toLowerCase().replace(/\s+/g, "")}`
+        )
+      );
+      if (matchingItem) setActiveTab(matchingItem.label);
+    }
+  }, [location.pathname]);
 
   const handleMobileItemClick = (item: NavItem) => {
     if (item.dropdown) {
@@ -153,6 +167,7 @@ export default function Header() {
     } else {
       setActiveTab(item.label);
       setIsNavMenuOpen(false);
+      if (item.label === "Home") navigate("/");
     }
   };
 
@@ -357,6 +372,7 @@ export default function Header() {
                       if (item.dropdown) {
                         setOpenDesktopDropdown((prev) => (prev === item.label ? null : item.label));
                       }
+                      if (item.label === "Home") navigate("/");
                     }}
                     className={`relative flex h-full w-full flex-col items-center justify-center gap-0.5 rounded-t-md px-2 py-3 text-center text-[15px] font-medium transition-all duration-300 ease-out whitespace-nowrap ${
                       isActive
