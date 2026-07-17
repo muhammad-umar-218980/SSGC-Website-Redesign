@@ -224,29 +224,13 @@ export default function FlameMagazine() {
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#f7f8fa] px-4 py-16 sm:px-6">
-      {/* Heading */}
-      <div className="mx-auto max-w-2xl text-center">
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-          <span className="text-blue-600">FLAME</span> <span className="text-[#0f1b3d]">MAGAZINE</span>
-        </h1>
-
-        <div className="mx-auto mt-5 flex w-24 items-center justify-center gap-2">
-          <span className="h-px flex-1 bg-blue-200" />
-          <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-          <span className="h-px flex-1 bg-blue-200" />
-        </div>
-
-        <p className="mx-auto mt-5 max-w-xl text-slate-500">
-          Explore our quarterly magazine archive showcasing SSGC's journey, achievements and commitment to a better
-          future.
-        </p>
-      </div>
-
+    <div className="min-h-screen bg-[#f7f8fa]">
       {/* Banner */}
-      <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-2xl shadow-md">
-        <img src={bannerImg} alt="Flame Magazine banner" className="h-auto w-full object-cover" loading="lazy" />
+      <div className="mx-3 sm:mx-4 lg:mx-6">
+        <img src={bannerImg} alt="Flame Magazine banner" className="w-full object-cover" loading="lazy" />
       </div>
+
+      <div className="px-4 py-16 sm:px-6">
 
       {/* Timeline */}
       <div className="relative mx-auto mt-14 max-w-5xl">
@@ -309,6 +293,7 @@ export default function FlameMagazine() {
           {showMore ? "Show Less" : "View More Issues"}
           <ChevronDownIcon className={`h-4 w-4 transition-transform ${showMore ? "rotate-180" : ""}`} />
         </button>
+      </div>
       </div>
     </div>
   );
